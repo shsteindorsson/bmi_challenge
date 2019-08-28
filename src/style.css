@@ -1,3 +1,14 @@
 body{
   margin: 10%;
+  font-family: 'Roboto', sans-serif;
+}
+#app-body{
+  display: block;
+  width: 400px;
+}
+#app-body div{
+  padding: 5px 0 5px 0;
+}
+#radios{
+  display: block;
 }

@@ -1,7 +1,6 @@
 {
   "name": "bmi_challenge",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "npm run features && npm run specs",
@@ -18,5 +17,14 @@
   "bin": {
     "training-wheels:generate": "./node_modules/e2e_training_wheels/dist/generators.js",
     "training-wheels:install": "./node_modules/e2e_training_wheels/dist/install.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shsteindorsson/bmi_challenge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shsteindorsson/bmi_challenge/issues"
+  },
+  "homepage": "https://github.com/shsteindorsson/bmi_challenge#readme",
+  "description": ""
 }
