@@ -5,85 +5,90 @@
     <meta charset="utf-8">
     <title>BMI calulator</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap" rel="stylesheet">
     <script src="js/person.js"></script>
     <script src="js/bmi_calculator.js"></script>
   </head>
 
   <body>
-    <form id="calculate">
-      <div id="metric-inputs">
-        <input type="text" id="weight-in-kgs" placeholder="Weight in kg">
+    <div id="app-outline">
+      <h1>Calculate your BMI</h1>
+      <p id="info">Enter your information into the form (either metric or imperial), <br>choose a system of measurement <br>and press "Calculate"</p>
+      <form id="calculate">
+        <div id="metric-inputs">
+          <input type="text" id="weight-in-kgs" placeholder="Weight in kg">
           <input type="text" id="height-in-cm" placeholder="Height in cm">
-      </div>
-      
-      <div id="imperial-inputs">
-        <input type="text" id="weight-in-lbs" placeholder="Weight in lbs">
-        <input type="text" id="height-in-in" placeholder="Height in inches">
-      </div>
-      
-      <div class="form-group row">
-        <div class="col-auto">
-          <select class="form-control" id="my_select">
-            <option value="metric">Metric System</option>
-            <option value="imperial">Imperial System</option>
-          </select>
         </div>
-      </div>
+        
+        <div id="imperial-inputs">
+          <input type="text" id="weight-in-lbs" placeholder="Weight in lbs">
+          <input type="text" id="height-in-in" placeholder="Height in inches">
+        </div>
+        
+        <div id="buttons">
+          
+          <div class="form-group row">
+            <div class="col-auto">
+              <select class="form-control" id="my_select">
+                <option value="metric">Metric System</option>
+                <option value="imperial">Imperial System</option>
+              </select>
+            </div>
+          </div>
 
-        <button type="submit" value="Calculate"> Calculate </button>
-    </form>
-      <div>
-        <span id="display_value"></span>
-        <span id="display_message"></span>
-      </div>
+          <button type="submit" value="Calculate"> Calculate </button>
 
- <script type="text/javascript">
-  // When the page has loaded, we create a set of global variables holding elements that we will use
-  // The attribute names speak for themselves   
-  const global = {}
-  global.calculateForm = document.querySelector('#calculate');
-  global.displayValueElement = document.querySelector('#display_value');
-  global.displayMessageElement = document.querySelector('#display_message');
-  global.methodSelector = document.querySelector('#my_select');
-  // Once the page has loaded, we add listeners to the select tag and the form
-  // there's a lot ol events that we can listen for. 
-  // here, we listen for when a value has changed and when a form has been submitted
-  document.addEventListener('DOMContentLoaded', () => {
-    // Submit listener on the form
-    global.calculateForm.addEventListener('submit', event => {
-      // 'preventDefault' prevents the default action the browser makes on the form
-      // we only want some java script to be executed, nothing else
-      event.preventDefault();
-      // the 'claculateBMI' function will create a ne instance of Person, calculate the 
-      // BMI and return the object. Its a asynchronous function (making use of a Promise)
-      // mening we can wait for the result and execute more code once we get the result back. Hence the use of '.then()'
-      calculateBMI().then(person => {
-          // once we have the result of the calculation, it's time to modify
-          // the document and display the results for the user to see. 
-          global.displayValueElement.innerHTML = `Your BMI is ${person.bmiValue}`;
-          global.displayMessageElement.innerHTML = `and you are ${person.bmiMessage}`;
+        </div>
+
+      </form>
+        
+      <div id="output-message">
+          <span id="display_value"></span>
+          <span id="display_message"></span>
+        </div>
+
+    </div>
+    <script type="text/javascript">
+  
+      const global = {}
+      global.calculateForm = document.querySelector('#calculate');
+      global.displayValueElement = document.querySelector('#display_value');
+      global.displayMessageElement = document.querySelector('#display_message');
+      global.methodSelector = document.querySelector('#my_select');
+      
+      document.addEventListener('DOMContentLoaded', () => {
+      
+        global.calculateForm.addEventListener('submit', event => {
+      
+          event.preventDefault();
+          
+          calculateBMI().then(person => {
+              global.displayValueElement.innerHTML = `Your BMI is <strong>${person.bmiValue}</strong>`;
+              global.displayMessageElement.innerHTML = `and you are <strong>${person.bmiMessage}</strong>`;
+            })
         })
-    })
-  });
-  const calculateBMI = () => {
-    let method = global.methodSelector.options[global.methodSelector.selectedIndex].value;
-    return new Promise(resolve => {
-      
-      let weightFormat = method === 'metric' ? 'weight-in-kgs' : 'weight-in-lbs'
-      let heightFormat = method === 'metric' ? 'height-in-cm' : 'height-in-in'
-      
-      let w = parseFloat(document.getElementById('weight-in-kgs').value);
-      let h = parseFloat(document.getElementById('height-in-cm').value);
-      
-      let person = new Person({
-        weight: w,
-        height: h,
       });
-      //person.calculate_bmi();
-      method === 'metric' ? person.calculate_bmi() : person.calculate_imperial_bmi();
-      resolve(person);
-    })
-  };
-</script>
+      const calculateBMI = () => {
+        let method = global.methodSelector.options[global.methodSelector.selectedIndex].value;
+        return new Promise(resolve => {
+          
+          let weightFormat = method === 'metric' ? 'weight-in-kgs' : 'weight-in-lbs'
+          let heightFormat = method === 'metric' ? 'height-in-cm' : 'height-in-in'
+          
+          let w = parseFloat(document.getElementById(weightFormat).value);
+          let h = parseFloat(document.getElementById(heightFormat).value);
+          
+          let person = new Person({
+            weight: w,
+            height: h,
+          });
+
+          method === 'metric' ? person.calculate_bmi() : person.calculate_imperial_bmi();
+          resolve(person);
+        })
+      };
+
+      
+    </script>
   </body>
 </html>
