@@ -21,6 +21,7 @@ button{
 form input{
   padding: 5px;
   margin: 5px;
+  width: 40%;
 }
 #info{
   margin: 10px 30px;
