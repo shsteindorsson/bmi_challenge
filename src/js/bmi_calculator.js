@@ -5,7 +5,6 @@ function BMICalculator() {
     let height = obj.height;
     if (weight > 0 && height > 0) {
       let finalBmi = weight / (height / 100 * height / 100);
-      console.log('metric_bmi');
       obj.bmiValue = parseFloat(finalBmi.toFixed(2));
       setBMIMessage(obj); 
     }
@@ -15,10 +14,9 @@ function BMICalculator() {
     let weight = obj.weight;
     let height = obj.height;
     if (weight > 0 && height > 0) {
-      let finalBmi = (weight * 703) / (height ** 2);
-      console.log('imperial_bmi');
+      let finalBmi = weight * 703 / height ** 2;
       obj.bmiValue = parseFloat(finalBmi.toFixed(2));
-      setBMIMessage(obj); 
+      setBMIMessage(obj);
     }
   }
 
@@ -42,4 +40,3 @@ function BMICalculator() {
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = BMICalculator;
 }
-
