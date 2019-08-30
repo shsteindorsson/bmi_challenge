@@ -7,7 +7,7 @@ BMI Calculator
 ![](https://raw.githubusercontent.com/shsteindorsson/shsteindorsson.github.io/master/images/bmi_calc_interface.png)
 
 ## Contributors
-[Sverrir Steindorsson](https://github.com/shsteindorsson)
+![](https://raw.githubusercontent.com/shsteindorsson/shsteindorsson.github.io/master/images/8bit_shs_icon.png) [Sverrir Steindorsson](https://github.com/shsteindorsson)
 
 ## Acknowledgments
 This program based on code acquired from [Craft Academy](https://www.craftacademy.se/) and is created as part of an Introduction to programming course.
