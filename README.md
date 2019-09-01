@@ -1,7 +1,8 @@
 BMI Calculator
 ==============
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f0eca919-604d-41c2-9158-a070cf61de31/deploy-status)](https://app.netlify.com/sites/shs-bmicalculator/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f0eca919-604d-41c2-9158-a070cf61de31/deploy-status)](https://app.netlify.com/sites/shs-bmicalculator/deploys)  
+
 **BMI Calculator** is an online program that allows users to calculate their Body Mass Index. Users can choose whether to calculate their BMI based on metric or imperial values. The calculator also indicates whether the calculated BMI is good or bad.
 
 ## Screenshot
